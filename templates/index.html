@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Todo App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+     <!-- Latest compiled and minified CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+     <!-- jQuery library -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+     <!-- Popper JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 
+     <!-- Latest compiled JavaScript -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+     <style>
+        .header {
+            background-image: url('https://img.freepik.com/free-photo/blue-smoke-waves-black-background_23-2148211023.jpg?size=626&ext=jpg&ga=GA1.1.393688201.1698263820&semt=ais');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 100px 0;
+            margin: 5px;
+
+            border-radius: 10px;
+        }
+
+        .input-wrapper {
+            background-color: white;
+            height: 60px;
+            padding-top: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .active-item {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!--header-->
+    <div class="header h-75">
+        <section class="container">
+            <h3 class="text-white pl-2">TODO APP</h3>
+            <div class="card-body">
+
+                <form method="post" action="/add">
+                    <div class="row input-wrapper ">
+                        <div class="col-10">
+                            <input class="form-control h-20" type="text" name="task" placeholder="Add a new task"
+                                required>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn  btn-block text-white" type="submit"
+                                style="background-color: rgb(136, 136, 231);">Create</button>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+
+
+
+        </section>
+
+    </div>
+
+     <!--List-->
+     <div class="container " style="margin-top: -90px;">
+        <ul class="list-group shadow">
+            {% for task in tasks %}
+
+            <li class="list-group-item">
+                {{task}}
+
+                <a type="button" class="close" href="{{ url_for('delete_task', index=loop.index0 )}}">&times;</a>
+            </li>
+
+            {% endfor %}
+        </u>
+    </div>
+</html>
